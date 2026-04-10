@@ -9,7 +9,7 @@ file = st.file_uploader(label="Upload your csv file here")
 if st.button(label="Upload"):
     
     with st.spinner("Analyzing...... "):
-        response = requests.post("http://127.0.0.1:8000/analyze-csv", files={"file": (file.name, file, "text/csv")})
+        response = requests.post("https://smart-csv-insights-dashboard.onrender.com", files={"file": (file.name, file, "text/csv")})
 
         if response.status_code == 200:
             data = response.json()

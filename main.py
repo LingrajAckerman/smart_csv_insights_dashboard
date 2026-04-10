@@ -5,7 +5,7 @@ app = FastAPI()
 
 @app.post("/analyze-csv")
 
-def analyze_csv_file(file: UploadFile = File(...)):
+def analyze_csv(file: UploadFile = File(...)):
 
     if not file.filename.endswith(".csv"):
         raise HTTPException(status_code=400, detail="Only CSV files are allowed")
@@ -19,6 +19,10 @@ def analyze_csv_file(file: UploadFile = File(...)):
     
     return analyze_dataframe(df)
     
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 def analyze_dataframe(df):
     
     rows, cols = df.shape

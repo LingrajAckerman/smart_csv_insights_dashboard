@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException, UploadFile, File
 import pandas as pd
-from services import analyze_dataframe
 
 app = FastAPI()
 
